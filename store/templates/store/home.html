@@ -1,8 +1,7 @@
+```html
 {% extends 'store/base.html' %}
 
-{% block title %}
-Home - SmartCart
-{% endblock %}
+{% block title %}Home - SmartCart{% endblock %}
 
 {% block content %}
 
@@ -16,29 +15,20 @@ Home - SmartCart
     <h2>Featured Products</h2>
 
     <div class="product-container">
-
+        {% for product in products %}
         <div class="product-card">
-            <h3>Wireless Headphones</h3>
-            <p>High quality wireless headphones.</p>
-            <h4>₹1,499</h4>
-            <button>Add to Cart</button>
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <h4>₹{{ product.price }}</h4>
+            <a href="{% url 'add_to_cart' product.id %}">
+    <button>Add to Cart</button>
+</a>
         </div>
-
-        <div class="product-card">
-            <h3>Smart Watch</h3>
-            <p>Track your fitness and stay connected.</p>
-            <h4>₹2,999</h4>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <h3>Gaming Mouse</h3>
-            <p>Fast and responsive gaming mouse.</p>
-            <h4>₹899</h4>
-            <button>Add to Cart</button>
-        </div>
-
+        {% empty %}
+        <p>No products available.</p>
+        {% endfor %}
     </div>
 </section>
 
 {% endblock %}
+```

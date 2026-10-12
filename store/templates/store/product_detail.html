@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+{{ product.name }} - SmartCart
+{% endblock %}
+
+{% block content %}
+
+<section class="products">
+
+    <div class="product-card">
+
+        <h2>{{ product.name }}</h2>
+
+        <p>{{ product.description }}</p>
+
+        <h3>₹{{ product.price }}</h3>
+
+        <p>Available Stock: {{ product.stock }}</p>
+
+       <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+</a>
+
+    </div>
+
+</section>
+
+{% endblock %}

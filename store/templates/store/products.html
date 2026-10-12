@@ -1,0 +1,35 @@
+{% extends 'store/base.html' %}
+
+{% block title %}
+Products - SmartCart
+{% endblock %}
+
+{% block content %}
+
+<section class="products">
+    <h2>All Products</h2>
+
+    <div class="product-container">
+
+        {% for product in products %}
+
+        <div class="product-card">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <h4>₹{{ product.price }}</h4>
+            <p>Stock: {{ product.stock }}</p>
+            <a href="{% url 'product_detail' product.id %}">
+            <button>View Details</button>
+</a>
+        </div>
+
+        {% empty %}
+
+        <p>No products available.</p>
+
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}
